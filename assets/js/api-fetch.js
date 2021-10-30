@@ -1,9 +1,11 @@
 
+// Created a function that wraps around the fetch request
 const getNew = function(){
-  
+
+// Fetch grabs the API data and converts it to JSON:
 fetch(`https://ghibliapi.herokuapp.com/films`)
   .then(function (response) {
-    // JSON that is returned from the server must be converted to a JS object asynchronously.
+
     console.log(response);
     if (!response.ok) {
       throw new Error('Not 200 OK');
@@ -11,6 +13,7 @@ fetch(`https://ghibliapi.herokuapp.com/films`)
     return response.json();
   })
 
+//  If successful, the data below should generate to the DOM under the "random-art" class:
   .then(function (data) {
     const artElement = document.querySelector('.random-art');
     const randomMovie = function () {
@@ -24,7 +27,6 @@ fetch(`https://ghibliapi.herokuapp.com/films`)
         <a href="${data[movie].image}"><img src="${data[movie].image}" alt="${data[movie].title}" width="400" height="600"></a>
         <h3>Click image to enlarge</h3>
         <p>Original Destription: ${data[movie].description}</p>
-
       </article>
       <section>
         <button type="button" class="new-movie" onclick="getNew()">Or click here for a random Ghibli!</button>
@@ -34,8 +36,9 @@ fetch(`https://ghibliapi.herokuapp.com/films`)
     randomMovie();
     console.log(data);
   })
+
+// If the API data isn't found, the error message below should be recieved by the user:
   .catch(function (err) {
-//  Error log and response
     console.log(err);
     const artElement = document.querySelector('.random-art')
     artElement.innerHTML = `<h2>404 - Page Not Found!</h2>`
