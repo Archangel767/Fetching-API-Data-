@@ -20,8 +20,9 @@ fetch(`https://ghibliapi.herokuapp.com/films`)
     const movie = Math.floor(Math.random() * 21);
     
     artElement.innerHTML = `
+      <h1>Ghibli Random Movie Generator</h1>
       <article>
-        <h1>${data[movie].title}</h1>
+        <h2>${data[movie].title}</h2>
         <p>Director: ${data[movie].director}</p>
         <p>Original Release Date: ${data[movie].release_date}</p>
         <a href="${data[movie].image}"><img src="${data[movie].image}" alt="${data[movie].title}" width="400" height="600"></a>
@@ -29,7 +30,7 @@ fetch(`https://ghibliapi.herokuapp.com/films`)
         <p>Original Destription: ${data[movie].description}</p>
       </article>
       <section>
-        <button type="button" class="new-movie" onclick="getNew()">Or click here for a random Ghibli!</button>
+        <button type="button" class="new-movie" onclick="getNew()">Or click here for more Ghibli!</button>
       </section>
       `
     };
